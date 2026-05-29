@@ -29,6 +29,11 @@
   .leaflet-popup-content-wrapper{border-radius:10px}
   .pop b{font-family:"Fraunces",serif;font-size:15px}
   .pop .pt{color:var(--muted);font-size:12px}
+  /* travel-time pills on route legs */
+  .legbox{display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .leg{background:rgba(246,240,230,.94);border:1px solid var(--line);border-radius:999px;
+    padding:1px 7px;font:600 11px/1.5 "Spectral",serif;color:var(--ink);white-space:nowrap;
+    box-shadow:0 1px 3px rgba(60,40,20,.22)}
   /* PANEL */
   .panel{padding:0 0 80px}
   header.hero{padding:54px 40px 26px;border-bottom:1px solid var(--line);
@@ -574,7 +579,7 @@
         </article>
 </section>
     <footer>
-      Walking lines show sequence only — club legs are Ubers. Photos &amp; hours pulled from Google and may shift over time; tap “Directions” for live info. Built from your “Paris 2026 — Full Itinerary.”
+      Route pills show estimated travel time and mode between stops — 🚶 walk · 🚇 metro · 🚕 Uber. Times are rough straight-line estimates, not live routing. Photos &amp; hours pulled from Google and may shift over time; tap “Directions” for live info. Built from your “Paris 2026 — Full Itinerary.”
     </footer>
   </div>
 </div>
@@ -602,6 +607,48 @@ STOPS.forEach((s,i)=>{
   m.on('click',()=>focusCard(i));
   m.addTo(layers[s.d]);
   markers[i]=m; allpts.push([s.lat,s.lng]);
+});
+
+// route connectors with travel-time pills
+function haversine(a,b){
+  const R=6371000, rad=x=>x*Math.PI/180;
+  const dLat=rad(b[0]-a[0]), dLng=rad(b[1]-a[1]);
+  const h=Math.sin(dLat/2)**2+Math.cos(rad(a[0]))*Math.cos(rad(b[0]))*Math.sin(dLng/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+const MODE={
+  walk:{icon:'🚶',dash:'3,6'},
+  metro:{icon:'🚇',dash:'7,7'},
+  bus:{icon:'🚌',dash:'7,7'},
+  uber:{icon:'🚕',dash:null}
+};
+function legMode(from,to,dist){
+  const txt=((from.note||'')+' '+(to.note||'')).toLowerCase();
+  if(/uber/.test(txt)) return 'uber';
+  if(/\bbus\b/.test(txt)) return 'bus';
+  if(/metro|métro/.test(txt)) return 'metro';
+  if(/walk/.test(txt) && dist<2600) return 'walk';
+  return dist>1500 ? 'uber' : 'walk';
+}
+function legTime(dist,mode){
+  if(mode==='walk') return Math.max(1,Math.round(dist*1.35/80));
+  if(mode==='metro')return Math.max(8,Math.round(dist*1.3/450)+7);
+  if(mode==='bus')  return Math.max(7,Math.round(dist*1.3/300)+6);
+  return Math.max(4,Math.round(dist*1.3/350)+3);
+}
+[1,2,3,4].forEach(d=>{
+  const seq=STOPS.map((s,i)=>({s,i})).filter(o=>o.s.d===d).sort((a,b)=>a.s.ord-b.s.ord);
+  for(let k=0;k<seq.length-1;k++){
+    const A=seq[k].s, B=seq[k+1].s;
+    const dist=haversine([A.lat,A.lng],[B.lat,B.lng]);
+    const mode=legMode(A,B,dist), t=legTime(dist,mode), M=MODE[mode];
+    L.polyline([[A.lat,A.lng],[B.lat,B.lng]],{
+      color:DAYS[d].color,weight:3,opacity:.6,dashArray:M.dash,lineCap:'round'
+    }).addTo(layers[d]);
+    L.marker([(A.lat+B.lat)/2,(A.lng+B.lng)/2],{interactive:false,
+      icon:L.divIcon({className:'legbox',iconSize:[60,18],iconAnchor:[30,9],
+        html:`<span class="leg">${M.icon} ${t}</span>`})}).addTo(layers[d]);
+  }
 });
 map.fitBounds(allpts,{padding:[40,40]});
 
