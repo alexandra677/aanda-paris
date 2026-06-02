@@ -699,8 +699,14 @@ DAYKEYS.forEach(d=>{
   const b=document.createElement('button');
   b.innerHTML=`<span class="sw" style="background:${DAYS[d].color}"></span>${DAYS[d].label}`;
   b.onclick=()=>{
-    if(map.hasLayer(layers[d])){map.removeLayer(layers[d]);b.classList.add('off');}
-    else{map.addLayer(layers[d]);b.classList.remove('off');}
+    const sec=document.getElementById('day'+d);
+    if(map.hasLayer(layers[d])){
+      map.removeLayer(layers[d]);b.classList.add('off');
+      if(sec) sec.style.display='none';
+    } else {
+      map.addLayer(layers[d]);b.classList.remove('off');
+      if(sec) sec.style.display='';
+    }
   };
   lg.appendChild(b);
 });
