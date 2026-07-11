@@ -69,7 +69,7 @@
     border-radius:10px;display:flex;align-items:center;justify-content:center}
   .card-img{width:116px;height:100%;min-height:92px;object-fit:cover;border-radius:9px;background:var(--paper2)}
   .card-body{min-width:0}
-  .card-top{display:flex;align-items:center;gap:10px;margin-bottom:3px}
+  .card-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:3px}
   .chip{font:600 10.5px/1 "Spectral",serif;letter-spacing:.13em;text-transform:uppercase;
     color:var(--day);border:1px solid color-mix(in srgb,var(--day) 45%,var(--line));
     border-radius:999px;padding:3px 8px}
@@ -105,7 +105,7 @@
       <h1>Seven Nights, Three Hotels,<br><em>One Proposal</em></h1>
       <p>Sat–Mon at Opera Marigny, then First Hotel by the Eiffel Tower, finishing at the Disneyland Hotel. Daytime is walking &amp; metro; the late club hops are Ubers. Wednesday's engagement plan is still tentative while Adin picks the day. Tap any stop to fly the map there.</p>
       <div class="legend" id="legend"></div>
-      <div class="rkey"><span class="klabel">Booking</span><span class="rbadge r-confirmed">Confirmed</span><span class="rbadge r-needs">Book now</span><span class="rbadge r-later">Book later</span><span class="rbadge r-none">No booking</span></div>
+      <div class="rkey"><span class="klabel">Booking</span><span class="rbadge r-confirmed">Confirmed</span><span class="rbadge r-needs">Booking still needed</span><span class="rbadge r-later">Book later</span><span class="rbadge r-none">No booking required</span></div>
     </header>
     <section class="day" id="day1" style="--day:#B23A48">
 <div class="day-head"><span class="day-dot"></span><div><h2>Saturday <span class="day-date">· Sep 5</span></h2><p class="day-theme">Arrival · Montmartre &amp; Pigalle</p></div></div>
@@ -126,7 +126,7 @@
           <div class="card-num">2</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Le_sacre_coeur.jpg/960px-Le_sacre_coeur.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">6:00 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">6:00 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Sacré-Cœur</h3>
             <p class="note">Golden hour at the basilica.</p>
             <p class="meta">6:30 AM–10:30 PM &nbsp;·&nbsp; 35 Rue du Chevalier de la Barre, 75018</p>
@@ -138,7 +138,7 @@
           <div class="card-num">3</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Park</span><span class="time">6:20 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Park</span><span class="time">6:20 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Parc de la Turlure</h3>
             <p class="note">Quiet terraced garden behind the basilica — the close-up back view minus crowds.</p>
             <p class="meta">9:00 AM–8:30 PM &nbsp;·&nbsp; 1 Rue de la Bonne, 75018</p>
@@ -150,7 +150,7 @@
           <div class="card-num">4</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">6:45 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">6:45 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>La Maison Rose</h3>
             <p class="note">Pink corner café on Rue de l&#x27;Abreuvoir — prettiest street on the butte.</p>
             <p class="meta">12:00–10:30 PM &nbsp;·&nbsp; 2 Rue de l&#x27;Abreuvoir, 75018</p>
@@ -162,7 +162,7 @@
           <div class="card-num">5</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Place_des_Abbesse_%28the_plaque_with_the_je_t%27aime%3Dte_iubesc_in_311_laguages%29.jpg/960px-Place_des_Abbesse_%28the_plaque_with_the_je_t%27aime%3Dte_iubesc_in_311_laguages%29.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">7:00 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">7:00 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Le mur des je t&#x27;aime</h3>
             <p class="note">&#x27;I love you&#x27; in 250+ languages. Quick photo.</p>
             <p class="meta">9:00 AM–7:30 PM &nbsp;·&nbsp; Square Jehan Rictus, Pl. des Abbesses, 75018</p>
@@ -174,7 +174,7 @@
           <div class="card-num">6</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Moulin_Rouge%2C_17_April_2011.jpg/960px-Moulin_Rouge%2C_17_April_2011.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">7:30 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">7:30 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Moulin Rouge</h3>
             <p class="note">Windmill photo as you come down Bd de Clichy into Pigalle.</p>
             <p class="meta">9:00 AM–11:00 PM &nbsp;·&nbsp; 82 Bd de Clichy, 75018</p>
@@ -225,7 +225,7 @@
           <div class="card-num">2</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">10:00 AM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">10:00 AM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>CULT Coffee and Brunch</h3>
             <p class="note">Viral chicken-pesto + truffle-mayo sandwich, pain perdu, tornado eggs. ~75 min.</p>
             <p class="meta">9:00 AM–6:00 PM &nbsp;·&nbsp; 13 Rue La Fayette, 75009</p>
@@ -237,7 +237,7 @@
           <div class="card-num">3</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/GaleriesLafayetteNuit.jpg/960px-GaleriesLafayetteNuit.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Shop</span><span class="time">11:30 AM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Shop</span><span class="time">11:30 AM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Galeries Lafayette Haussmann</h3>
             <p class="note">The dome + free rooftop view. Light shopping.</p>
             <p class="meta">11:00 AM–8:00 PM &nbsp;·&nbsp; 40 Bd Haussmann, 75009</p>
@@ -249,7 +249,7 @@
           <div class="card-num">4</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Paris_Opera_full_frontal_architecture%2C_May_2009.jpg/960px-Paris_Opera_full_frontal_architecture%2C_May_2009.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">12:30 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">12:30 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Palais Garnier</h3>
             <p class="note">Self-guided — grand staircase, Chagall ceiling. €15, last entry 4:15.</p>
             <p class="meta">Tours ~10 AM–5 PM &nbsp;·&nbsp; Pl. de l&#x27;Opéra, 75009</p>
@@ -261,7 +261,7 @@
           <div class="card-num">5</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">1:30 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">1:30 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Le Grand Colbert</h3>
             <p class="note">Belle Époque brasserie — the room from Something&#x27;s Gotta Give. Reserve ahead.</p>
             <p class="meta">Verify Sun hours &nbsp;·&nbsp; 2 Rue Vivienne, 75002</p>
@@ -273,7 +273,7 @@
           <div class="card-num">6</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Place_Vendome%2C_Paris_20_April_2011.jpg/960px-Place_Vendome%2C_Paris_20_April_2011.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">3:00 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">3:00 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Place Vendôme</h3>
             <p class="note">Ritz photo op, then into the Tuileries.</p>
             <p class="meta">Open square &nbsp;·&nbsp; Pl. Vendôme, 75001</p>
@@ -285,7 +285,7 @@
           <div class="card-num">7</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Longchamp_Flagship_%2848155639757%29.jpg/960px-Longchamp_Flagship_%2848155639757%29.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Shop</span><span class="time">3:15 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Shop</span><span class="time">3:15 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Longchamp Saint-Honoré</h3>
             <p class="note">Le Pliage tote + free Eiffel stamp &amp; gold-initial engraving. BRING PASSPORTS for VAT.</p>
             <p class="meta">11:00 AM–7:00 PM &nbsp;·&nbsp; 404 Rue Saint-Honoré, 75001</p>
@@ -297,7 +297,7 @@
           <div class="card-num">8</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Crowd_in_the_Jardin_des_Tuileries%2C_Paris_July_2014.jpg/960px-Crowd_in_the_Jardin_des_Tuileries%2C_Paris_July_2014.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Park</span><span class="time">3:45 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Park</span><span class="time">3:45 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Jardin des Tuileries</h3>
             <p class="note">Walk west through the garden toward the Orangerie.</p>
             <p class="meta">7:30 AM–7:30 PM &nbsp;·&nbsp; 75001 Paris</p>
@@ -309,7 +309,7 @@
           <div class="card-num">9</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Mus%C3%A9e_de_l%E2%80%99Orangerie_exterior.JPG/960px-Mus%C3%A9e_de_l%E2%80%99Orangerie_exterior.JPG" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">4:00 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">4:00 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Musée de l&#x27;Orangerie</h3>
             <p class="note">Monet&#x27;s Water Lilies in the oval rooms. ~45 min.</p>
             <p class="meta">9:00 AM–6:00 PM (Sun) &nbsp;·&nbsp; Jardin des Tuileries, 75001</p>
@@ -321,7 +321,7 @@
           <div class="card-num">10</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Drouant.jpg/960px-Drouant.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">6:15 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">6:15 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Drouant</h3>
             <p class="note">Early dinner, 6-min walk from hotel. Wrap by 8 to Uber to the show.</p>
             <p class="meta">12:00–11:00 PM (Sun) &nbsp;·&nbsp; 16-18 Rue Gaillon, 75002</p>
@@ -333,7 +333,7 @@
           <div class="card-num">11</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Crazy-Horse-Saloon-P1000388.jpg/960px-Crazy-Horse-Saloon-P1000388.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Night</span><span class="time">8:30 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Night</span><span class="time">8:30 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Crazy Horse Paris</h3>
             <p class="note">UBER from Drouant (~€15, 10 min). Reconfirm exact show time when booking.</p>
             <p class="meta">Shows 8:00 &amp; 10:30 PM (Sun) &nbsp;·&nbsp; 12 Av. George V, 75008</p>
@@ -345,7 +345,7 @@
           <div class="card-num">12</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Night</span><span class="time">11:00 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Night</span><span class="time">11:00 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>La Marquise Club</h3>
             <p class="note">UBER from Crazy Horse (~€10). Strict dress — no pants on women. Back ~2am.</p>
             <p class="meta">10:00 PM–5:00 AM &nbsp;·&nbsp; 84 Rue Saint-Honoré, 75001</p>
@@ -372,7 +372,7 @@
           <div class="card-num">2</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/AngelinaParis.JPG/960px-AngelinaParis.JPG" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">11:00 AM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">11:00 AM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Angelina</h3>
             <p class="note">Brunch + the famous chocolat chaud. 15-min walk via Place Vendôme.</p>
             <p class="meta">8:00 AM–7:30 PM &nbsp;·&nbsp; 226 Rue de Rivoli, 75001</p>
@@ -384,7 +384,7 @@
           <div class="card-num">3</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Louvre_museum%27s_inverted_pyramid_%28cropped%29.jpg/960px-Louvre_museum%27s_inverted_pyramid_%28cropped%29.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">12:00 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">12:00 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Louvre Museum</h3>
             <p class="note">Pre-booked noon timed entry. Mona Lisa, Venus de Milo, Napoleon III apts. ~3.5 hrs.</p>
             <p class="meta">9:00 AM–6:00 PM (Mon) &nbsp;·&nbsp; Rue de Rivoli, 75001</p>
@@ -396,7 +396,7 @@
           <div class="card-num">4</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">3:45 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">3:45 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Le Café Marly</h3>
             <p class="note">Coffee under the colonnade with a courtyard + pyramid view.</p>
             <p class="meta">8:30 AM–2:00 AM &nbsp;·&nbsp; 93 Rue de Rivoli, 75001</p>
@@ -408,7 +408,7 @@
           <div class="card-num">5</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Louvre_museum%27s_inverted_pyramid_%28cropped%29.jpg/960px-Louvre_museum%27s_inverted_pyramid_%28cropped%29.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">4:30 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">4:30 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Carrousel du Louvre</h3>
             <p class="note">The inverted glass pyramid, then walk out toward the passages.</p>
             <p class="meta">9:00 AM–6:00 PM &nbsp;·&nbsp; 99 Rue de Rivoli, 75001</p>
@@ -420,7 +420,7 @@
           <div class="card-num">6</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/GalerieVivienne1.jpg/960px-GalerieVivienne1.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">5:00 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">5:00 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Galerie Vivienne</h3>
             <p class="note">Covered passage, mosaic floor.</p>
             <p class="meta">8:30 AM–8:00 PM &nbsp;·&nbsp; 4 Rue des Petits Champs, 75002</p>
@@ -432,7 +432,7 @@
           <div class="card-num">7</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Passage_des_Panoramas.JPG/960px-Passage_des_Panoramas.JPG" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">5:30 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">5:30 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Passage des Panoramas</h3>
             <p class="note">Oldest covered passage (1799). Stamp shops + bistros.</p>
             <p class="meta">6:00 AM–12:00 AM &nbsp;·&nbsp; 11 Bd Montmartre, 75002</p>
@@ -444,7 +444,7 @@
           <div class="card-num">8</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">7:00 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">7:00 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Le Grand Véfour</h3>
             <p class="note">Dinner in the Palais Royal arcades. À la carte to wrap by ~9 and dress for Le Mask.</p>
             <p class="meta">7:00–11:30 PM &nbsp;·&nbsp; 17 Rue de Beaujolais, 75001</p>
@@ -456,7 +456,7 @@
           <div class="card-num">9</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Night</span><span class="time">11:00 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Night</span><span class="time">11:00 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Le Mask</h3>
             <p class="note">Couples-only (18 Rue Feydeau). Short Uber from hotel (~€8). Back ~2am.</p>
             <p class="meta">10:30 PM–4:00 AM &nbsp;·&nbsp; 18 Rue Feydeau, 75002</p>
@@ -471,7 +471,7 @@
           <div class="card-num">1</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">11:00 AM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">11:00 AM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Bo&amp;Mie (Louvre-Rivoli)</h3>
             <p class="note">Sit-down brunch — big pastries, bowls + coffee. (Nearest branch; ~15 min from Opera Marigny.)</p>
             <p class="meta">7:30 AM–8:00 PM &nbsp;·&nbsp; 91 Rue de Rivoli, 75001</p>
@@ -495,7 +495,7 @@
           <div class="card-num">3</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">2:00 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">2:00 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Musée d&#x27;Orsay</h3>
             <p class="note">Pre-booked 2pm timed entry (mandatory). Impressionists + Youssef Nabil. ~2.5 hrs.</p>
             <p class="meta">9:30 AM–6:00 PM (Tue) &nbsp;·&nbsp; Esplanade Valéry Giscard d&#x27;Estaing, 75007</p>
@@ -507,7 +507,7 @@
           <div class="card-num">4</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Pont_Alexandre_III_depuis_pont_de_la_Concorde_Paris.jpg/960px-Pont_Alexandre_III_depuis_pont_de_la_Concorde_Paris.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">4:30 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">4:30 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Pont Alexandre III</h3>
             <p class="note">Paris&#x27;s prettiest bridge. Photos, then Uber across to the 6th (~€12).</p>
             <p class="meta">Open bridge &nbsp;·&nbsp; Pont Alexandre III, 75008</p>
@@ -519,7 +519,7 @@
           <div class="card-num">5</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LuxembourgMontparnasse.JPG/960px-LuxembourgMontparnasse.JPG" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Park</span><span class="time">5:10 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Park</span><span class="time">5:10 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Jardin du Luxembourg</h3>
             <p class="note">Unhurried stroll — Medici Fountain, the palace, green chairs by the pond.</p>
             <p class="meta">Dawn–dusk &nbsp;·&nbsp; 75006 Paris</p>
@@ -531,7 +531,7 @@
           <div class="card-num">6</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/VanillaMacaron.jpg/960px-VanillaMacaron.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Shop</span><span class="time">5:45 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Shop</span><span class="time">5:45 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Pierre Hermé Bonaparte</h3>
             <p class="note">Macarons to-go — Ispahan + Mogador + a gift box.</p>
             <p class="meta">10:00 AM–8:00 PM &nbsp;·&nbsp; 72 Rue Bonaparte, 75006</p>
@@ -543,7 +543,7 @@
           <div class="card-num">7</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Shop</span><span class="time">6:00 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Shop</span><span class="time">6:00 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>San Francisco Books Co.</h3>
             <p class="note">Quick browse, one bilingual title for the trip home.</p>
             <p class="meta">10:00 AM–8:00 PM &nbsp;·&nbsp; 17 Rue Monsieur le Prince, 75006</p>
@@ -555,7 +555,7 @@
           <div class="card-num">8</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Sight</span><span class="time">6:15 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Sight</span><span class="time">6:15 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Cour du Commerce Saint-André</h3>
             <p class="note">18th-c. covered passage; Le Procope (oldest café in Paris) at the end.</p>
             <p class="meta">Open passage &nbsp;·&nbsp; Cr du Commerce Saint-André, 75006</p>
@@ -567,7 +567,7 @@
           <div class="card-num">9</div>
           <img class="card-img" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Caf%C3%A9_de_Flore%2C_172_boulevard_Saint-Germain%2C_Paris_6e.jpg/960px-Caf%C3%A9_de_Flore%2C_172_boulevard_Saint-Germain%2C_Paris_6e.jpg" alt="" onerror="this.style.display='none'">
           <div class="card-body">
-            <div class="card-top"><span class="chip">Eat</span><span class="time">6:30 PM</span><span class="rbadge r-none">No booking</span></div>
+            <div class="card-top"><span class="chip">Eat</span><span class="time">6:30 PM</span><span class="rbadge r-none">No booking required</span></div>
             <h3>Café de Flore</h3>
             <p class="note">Relaxed early dinner on the Saint-Germain terrace. Then Uber back to First Hotel to change.</p>
             <p class="meta">7:30 AM–2:00 AM &nbsp;·&nbsp; 172 Bd Saint-Germain, 75006</p>
@@ -579,7 +579,7 @@
           <div class="card-num">10</div>
           <div class="card-img"></div>
           <div class="card-body">
-            <div class="card-top"><span class="chip">Night</span><span class="time">10:30 PM</span><span class="rbadge r-needs">Book now</span></div>
+            <div class="card-top"><span class="chip">Night</span><span class="time">10:30 PM</span><span class="rbadge r-needs">Booking still needed</span></div>
             <h3>Taken Club</h3>
             <p class="note">UBER from First Hotel (~€20). Trio Night. Women: dress/skirt, no long sleeves; men: jacket.</p>
             <p class="meta">10:30 PM–4:00 AM (Tue) &nbsp;·&nbsp; 8 Rue le Regrattier, 75004</p>
@@ -726,7 +726,7 @@ DAYKEYS.forEach(d=>{
 
 // render generated day sections (Wed–Sat) into #moredays, in STOPS order
 const KIND={hotel:'Hotel',sight:'Sight',park:'Park',food:'Eat',club:'Night',shop:'Shop',spa:'Beauty'};
-const RESV={none:['r-none','No booking'],needs:['r-needs','Book now'],confirmed:['r-confirmed','Confirmed'],later:['r-later','Book later']};
+const RESV={none:['r-none','No booking required'],needs:['r-needs','Booking still needed'],confirmed:['r-confirmed','Confirmed'],later:['r-later','Book later']};
 function rbadge(r){const m=RESV[r]||RESV.none;return `<span class="rbadge ${m[0]}">${m[1]}</span>`;}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;'}[c]));}
 function cardHTML(s){
