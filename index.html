@@ -52,6 +52,7 @@
   .legend button.off{opacity:.38}
   .legend .sw{width:11px;height:11px;border-radius:50%}
   .day{padding:34px 40px 6px}
+  .emptyhint{padding:34px 40px 6px;color:var(--muted);font-size:14px;line-height:1.6}
   .day-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;
     position:sticky;top:0;background:linear-gradient(180deg,var(--paper) 70%,transparent);
     padding:12px 0 8px;z-index:5}
@@ -117,6 +118,7 @@
       <div class="rkey"><span class="klabel">Booking</span><span class="rbadge r-confirmed">Confirmed</span><span class="rbadge r-needs">Booking still needed</span><span class="rbadge r-later">Book later</span><span class="rbadge r-none">No booking required</span></div>
       <div id="actions" class="actions"></div>
     </header>
+    <div id="emptyhint" class="emptyhint">Pick a day above to show its stops on the map and in the itinerary.</div>
     <section class="day" id="day1" style="--day:#B23A48">
 <div class="day-head"><span class="day-dot"></span><div><h2>Saturday <span class="day-date">· Sep 5</span></h2><p class="day-theme">Arrival · Montmartre &amp; Pigalle</p></div></div>
 
@@ -739,6 +741,9 @@ map.fitBounds(corepts.length?corepts:allpts,{padding:[40,40]});
 
 // legend toggles
 const lg = document.getElementById('legend');
+const dayBtns={};
+function anyDayOn(){return DAYKEYS.some(d=>map.hasLayer(layers[d]));}
+function updateHint(){const h=document.getElementById('emptyhint');if(h)h.style.display=anyDayOn()?'none':'';}
 DAYKEYS.forEach(d=>{
   const b=document.createElement('button');
   b.innerHTML=`<span class="sw" style="background:${DAYS[d].color}"></span>${DAYS[d].label}`;
@@ -751,7 +756,9 @@ DAYKEYS.forEach(d=>{
       map.addLayer(layers[d]);b.classList.remove('off');
       if(sec) sec.style.display='';
     }
+    updateHint();
   };
+  dayBtns[d]=b;
   lg.appendChild(b);
 });
 
@@ -787,6 +794,15 @@ DAYKEYS.filter(d=>d>=5).forEach(d=>{
   ${seq.map(cardHTML).join('\n')}`;
   moredays.appendChild(sec);
 });
+
+// start with every day off — pick a day from the legend to show it
+DAYKEYS.forEach(d=>{
+  if(map.hasLayer(layers[d])) map.removeLayer(layers[d]);
+  if(dayBtns[d]) dayBtns[d].classList.add('off');
+  const sec=document.getElementById('day'+d);
+  if(sec) sec.style.display='none';
+});
+updateHint();
 
 // card <-> map
 const cards = [...document.querySelectorAll('.card')];
