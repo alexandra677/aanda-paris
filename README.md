@@ -4,7 +4,7 @@ An interactive, day-by-day map and itinerary for a September 2026 trip to Paris.
 
 ## 🔗 Live site
 
-**https://alexandra677.github.io/paris-site/**
+**https://alexandra677.github.io/aanda-paris/**
 
 ## About
 
