@@ -750,7 +750,17 @@ DAYKEYS.forEach(d=>{
 });
 // fit to the central Paris cluster; Versailles & Disneyland sit far off to the sides
 const corepts = allpts.filter(p=>p[1]>2.25 && p[1]<2.45 && p[0]>48.80 && p[0]<48.90);
-map.fitBounds(corepts.length?corepts:allpts,{padding:[40,40]});
+// Leaflet sizes the view from the container; if fitBounds runs before layout has
+// settled it reads a zero-height box and clamps to maxZoom, leaving a blank map.
+// Re-fit a couple of times over the first 250ms, then just keep the size honest.
+function fitCore(){
+  map.invalidateSize();
+  map.fitBounds(corepts.length?corepts:allpts,{padding:[40,40]});
+}
+fitCore();
+requestAnimationFrame(fitCore);
+setTimeout(fitCore,250);
+window.addEventListener('resize',()=>map.invalidateSize());
 
 // legend toggles
 const lg = document.getElementById('legend');
@@ -825,7 +835,7 @@ cards.forEach((card,i)=>{
   const note=card.querySelector('.note'); if(!note||card.querySelector('.bookedby')) return;
   const p=document.createElement('p'); p.className='bookedby';
   p.textContent = s.resv==='confirmed'
-    ? '👤 Booked by '+(s.bookedBy||'—')
+    ? (s.bookedBy ? '👤 Booked by '+s.bookedBy : '👤 Booked')
     : (s.bookedBy ? '🕓 To be booked by '+s.bookedBy : '🕓 To be booked');
   note.insertAdjacentElement('afterend',p);
 });
