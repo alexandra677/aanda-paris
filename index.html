@@ -97,6 +97,7 @@
   .wxseg .wxmain{display:flex;align-items:baseline;gap:6px;margin-bottom:3px}
   .wxseg .wxicon{font-size:17px;line-height:1}
   .wxseg .wxtemp{font-family:"Fraunces",serif;font-weight:600;font-size:16px}
+  .wxseg .wxtempc{font-size:11px;color:var(--muted);margin:-2px 0 3px}
   .wxseg .wxdesc{font-size:11.5px;color:var(--ink);opacity:.8;margin-bottom:5px}
   .wxseg .wxmeta{display:flex;gap:9px;font-size:11px;color:var(--muted)}
   .wxseg .wxmeta span{display:inline-flex;align-items:center;gap:2px}
@@ -850,18 +851,20 @@ document.querySelectorAll('section.day').forEach(sec=>{
   const w = WEATHER[dnum]; if(!w) return;
   const head = sec.querySelector('.day-head'); if(!head) return;
   const rain = v => v==null ? '—' : v+'%';
+  const cToF = c => Math.round(c*9/5+32);
   const segOrder = [['morning','Morning'],['afternoon','Afternoon'],['night','Night']];
   const segHTML = segOrder.map(([k,label])=>{
     const s = w.segments[k]; if(!s) return '';
     return `<div class="wxseg">
       <div class="wxpart">${label}</div>
       <div class="wxloc">📍 ${esc(s.loc)}</div>
-      <div class="wxmain"><span class="wxicon">${s.icon}</span><span class="wxtemp">${Math.round(s.lo)}–${Math.round(s.hi)}°C</span></div>
+      <div class="wxmain"><span class="wxicon">${s.icon}</span><span class="wxtemp">${cToF(s.lo)}–${cToF(s.hi)}°F</span></div>
+      <div class="wxtempc">${Math.round(s.lo)}–${Math.round(s.hi)}°C</div>
       <div class="wxdesc">${esc(s.desc)}</div>
       <div class="wxmeta"><span>💧 ${rain(s.rainPct)}</span><span>💦 ${s.humidity==null?'—':s.humidity+'%'}</span></div>
     </div>`;
   }).join('');
-  const dayLine = (w.dayLo!=null) ? `<div class="wxday">Day range: <b>${Math.round(w.dayLo)}–${Math.round(w.dayHi)}°C</b>`+
+  const dayLine = (w.dayLo!=null) ? `<div class="wxday">Day range: <b>${cToF(w.dayLo)}–${cToF(w.dayHi)}°F</b> (${Math.round(w.dayLo)}–${Math.round(w.dayHi)}°C)`+
     (w.dayPrecip!=null?` · rain total <b>${w.dayPrecip}mm</b>`:'')+
     (w.uv!=null?` · UV <b>${w.uv}</b>`:'')+`</div>` : '';
   const strip = document.createElement('div');
