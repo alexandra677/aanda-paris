@@ -43,13 +43,18 @@
   p.subkicker{font:600 12px/1 "Spectral",serif;letter-spacing:.22em;text-transform:uppercase;
     color:var(--muted);margin:0 0 20px}
   header.hero p{margin:0;color:var(--muted);max-width:46ch;font-size:15px}
-  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-  .legend button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);
-    background:rgba(255,255,255,.5);border-radius:999px;padding:6px 13px;cursor:pointer;
-    font-family:"Spectral",serif;font-size:13px;color:var(--ink);transition:.18s}
-  .legend button:hover{background:#fff}
-  .legend button.off{opacity:.38}
-  .legend .sw{width:11px;height:11px;border-radius:50%}
+  .legend{display:flex;flex-wrap:nowrap;gap:2px;margin-top:24px;overflow-x:auto;
+    border-bottom:1px solid var(--line);scrollbar-width:thin}
+  .legend button{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;
+    border:none;border-bottom:3px solid transparent;background:transparent;border-radius:6px 6px 0 0;
+    padding:6px 10px 7px;cursor:pointer;transition:.18s;white-space:nowrap}
+  .legend button .wd{font:700 9.5px/1 "Spectral",serif;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--muted)}
+  .legend button .dt{font-family:"Fraunces",serif;font-weight:600;font-size:14.5px;color:var(--ink)}
+  .legend button:hover{background:rgba(255,255,255,.55)}
+  .legend button:not(.off){border-bottom-color:var(--c)}
+  .legend button.off{opacity:.4}
+  .legend button.off .dt{color:var(--muted)}
   .day{padding:34px 40px 6px}
   .emptyhint{padding:34px 40px 6px;color:var(--muted);font-size:14px;line-height:1.6}
   .day-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;
@@ -79,8 +84,6 @@
   .r-needs{background:#fdeceb;color:#b42318;border:1px solid #f4c5c0}
   .r-confirmed{background:#e6f6ec;color:#1a7f43;border:1px solid #b3e2c4}
   .r-later{background:#fdf3e0;color:#b06a00;border:1px solid #f2dbab}
-  .rkey{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
-  .rkey .klabel{font:600 11px/1 "Spectral",serif;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
   .actions{margin-top:20px;padding:15px 17px;border:1px solid color-mix(in srgb,var(--rouge) 22%,var(--line));border-radius:14px;background:color-mix(in srgb,var(--rouge) 4%,var(--paper2))}
   .actions-h{font-family:"Fraunces",serif;font-weight:600;font-size:16px;margin-bottom:4px}
   .actions-sub{font:600 10.5px/1 "Spectral",serif;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:12px 0 7px}
@@ -137,7 +140,6 @@
       <h1 class="kicker">Paris 2026</h1>
       <p class="subkicker">Sept 4 – 15</p>
       <div class="legend" id="legend"></div>
-      <div class="rkey"><span class="klabel">Booking</span><span class="rbadge r-confirmed">Confirmed</span><span class="rbadge r-needs">Booking still needed</span><span class="rbadge r-later">Book later</span><span class="rbadge r-none">No booking required</span></div>
       <div id="actions" class="actions"></div>
       <div id="wxstatus" class="wxstatus">🌦️ Weather: <span id="wxUpdatedAt">loading live forecast…</span> <button id="wxRefreshBtn" type="button">Refresh</button></div>
     </header>
@@ -889,7 +891,10 @@ function anyDayOn(){return DAYKEYS.some(d=>map.hasLayer(layers[d]));}
 function updateHint(){const h=document.getElementById('emptyhint');if(h)h.style.display=anyDayOn()?'none':'';}
 DAYKEYS.forEach(d=>{
   const b=document.createElement('button');
-  b.innerHTML=`<span class="sw" style="background:${DAYS[d].color}"></span>${DAYS[d].label}`;
+  b.style.setProperty('--c', DAYS[d].color);
+  const wd = DAYS[d].label.slice(0,3);
+  const dt = DAYS[d].date.split(' ').pop();
+  b.innerHTML = `<span class="wd">${wd}</span><span class="dt">${dt}</span>`;
   b.onclick=()=>{
     const sec=document.getElementById('day'+d);
     if(map.hasLayer(layers[d])){
