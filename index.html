@@ -889,23 +889,24 @@ const lg = document.getElementById('legend');
 const dayBtns={};
 function anyDayOn(){return DAYKEYS.some(d=>map.hasLayer(layers[d]));}
 function updateHint(){const h=document.getElementById('emptyhint');if(h)h.style.display=anyDayOn()?'none':'';}
+function selectDay(target){
+  DAYKEYS.forEach(d=>{
+    const sec=document.getElementById('day'+d);
+    const on = d===target;
+    if(on){ if(!map.hasLayer(layers[d])) map.addLayer(layers[d]); }
+    else { if(map.hasLayer(layers[d])) map.removeLayer(layers[d]); }
+    if(dayBtns[d]) dayBtns[d].classList.toggle('off', !on);
+    if(sec) sec.style.display = on ? '' : 'none';
+  });
+  updateHint();
+}
 DAYKEYS.forEach(d=>{
   const b=document.createElement('button');
   b.style.setProperty('--c', DAYS[d].color);
   const wd = DAYS[d].label.slice(0,3);
   const dt = DAYS[d].date.split(' ').pop();
   b.innerHTML = `<span class="wd">${wd}</span><span class="dt">${dt}</span>`;
-  b.onclick=()=>{
-    const sec=document.getElementById('day'+d);
-    if(map.hasLayer(layers[d])){
-      map.removeLayer(layers[d]);b.classList.add('off');
-      if(sec) sec.style.display='none';
-    } else {
-      map.addLayer(layers[d]);b.classList.remove('off');
-      if(sec) sec.style.display='';
-    }
-    updateHint();
-  };
+  b.onclick=()=>selectDay(d);
   dayBtns[d]=b;
   lg.appendChild(b);
 });
@@ -943,14 +944,8 @@ DAYKEYS.filter(d=>d>=5).forEach(d=>{
   moredays.appendChild(sec);
 });
 
-// start with every day off — pick a day from the legend to show it
-DAYKEYS.forEach(d=>{
-  if(map.hasLayer(layers[d])) map.removeLayer(layers[d]);
-  if(dayBtns[d]) dayBtns[d].classList.add('off');
-  const sec=document.getElementById('day'+d);
-  if(sec) sec.style.display='none';
-});
-updateHint();
+// default to a single day on load; clicking a tab swaps to that day alone
+selectDay(DAYKEYS[0]);
 
 // card <-> map
 const cards = [...document.querySelectorAll('.card')];
