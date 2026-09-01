@@ -1205,11 +1205,16 @@ cards.forEach((card,i)=>{
   const datesHTML=dated.map(s=>`<li><span class="dtag">${esc(s.resvDate)}</span><span><b>${esc(s.n)}</b> — ${esc(why[s.n]||'booking opens')}</span></li>`).join('');
   const asapHTML=asap.map(n=>`<span class="nchip asap">⚡ ${esc(n)}</span>`).join('');
   const needsHTML=needs.map(n=>`<span class="nchip">${esc(n)}</span>`).join('');
+  if(!asap.length&&!dated.length&&!needs.length){
+    el.style.display='none';
+    el.innerHTML='';
+    return;
+  }
+  el.style.display='';
   el.innerHTML=`<div class="actions-h">📌 Before you go — what's left to book</div>`+
     (asap.length?`<div class="actions-sub">⚡ Book ASAP</div><div class="needlist">${asapHTML}</div>`:'')+
     (dated.length?`<div class="actions-sub">Book on these dates</div><ul class="actions-dates">${datesHTML}</ul>`:'')+
-    (needs.length?`<div class="actions-sub">Still to book · ${needs.length}</div><div class="needlist">${needsHTML}</div>`:'')+
-    ((!asap.length&&!dated.length&&!needs.length)?`<div class="allset">🎉 Everything is booked!</div>`:'');
+    (needs.length?`<div class="actions-sub">Still to book · ${needs.length}</div><div class="needlist">${needsHTML}</div>`:'');
 })();
 </script>
 </body>
